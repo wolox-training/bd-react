@@ -1,0 +1,30 @@
+
+html {
+  font-family: Open Sans;
+}
+
+body {
+  margin: 0;
+}
+
+.main {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 6px solid #f5c85f;
+}
+
+hr {
+  width: 3px;
+  height: 300px;
+  margin: 25px;
+  border: none;
+  background: linear-gradient(rgba(255, 193, 7, 0), #FF9800, rgba(255, 193, 7, 0));
+}
+
+@media only screen and (max-width:700px) {
+  .cellphone, hr {
+    display: none;
+  }
+}
