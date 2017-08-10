@@ -90,7 +90,6 @@ input {
 
 .subscribe .input-email {
   border: none;
-  border-radius: 12px;
   padding: 5px;
   width: 300px;
 }
