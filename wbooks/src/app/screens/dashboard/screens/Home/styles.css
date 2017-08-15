@@ -1,0 +1,9 @@
+
+.home {
+  padding: 10px;
+  font-family: 'Roboto';
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
