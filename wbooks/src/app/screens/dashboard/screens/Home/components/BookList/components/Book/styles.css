@@ -1,0 +1,24 @@
+.book {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin: 35px;
+}
+
+.book img {
+  background-color: lightgrey;
+  width: 130px;
+  height: 180px;
+  margin-bottom: 10px;
+}
+
+.book span {
+  font-weight: bold;
+  font-size: 14px;
+  max-width: 120px;
+}
+
+.book p {
+  font-size: 12px;
+  margin: 0px;
+}

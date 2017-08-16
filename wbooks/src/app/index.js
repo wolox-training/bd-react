@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
+import './styles.css';
+import Dashboard from './screens/dashboard';
 
-      </div>
-    );
-  }
+
+const App = () => {
+  return (
+    <div className="App">
+      <Dashboard />
+    </div>
+  );
 }
 
 export default App;

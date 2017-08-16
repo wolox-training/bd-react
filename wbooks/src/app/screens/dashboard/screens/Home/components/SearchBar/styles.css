@@ -1,0 +1,31 @@
+.search-bar {
+  height: 40px;
+  margin: 10px;
+}
+
+form {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar select, input {
+  background-color: #f4f4f4;
+  border: none;
+  height: 40px;
+  width: 250px;
+}
+
+.search-bar select {
+  margin: 0 15px 0 0;
+}
+
+.search-bar input {
+  margin: 0 0 0 15px;
+}
+
+.search-bar button {
+  border: none;
+  background-color: #a5cd39;
+  width: 40px;
+  height: 40px;
+}
