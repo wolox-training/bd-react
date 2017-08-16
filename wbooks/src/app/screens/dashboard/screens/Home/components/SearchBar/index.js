@@ -11,7 +11,7 @@ class SearchBar extends React.Component {
     this.props.onSubmit(value);
   }
 
-  setRef = (textInput) => (this.textInput = textInput);
+  setRef = textInput => (this.textInput = textInput);
 
   render() {
     return (
@@ -29,7 +29,7 @@ class SearchBar extends React.Component {
 }
 
 SearchBar.propTypes = {
-  value: PropTypes.string
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default SearchBar;

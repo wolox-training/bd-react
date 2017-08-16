@@ -15,8 +15,9 @@ class Home extends React.Component {
 }
 
   handleSubmit = value => {
-    this.setState({ books: BookServices.books.filter(book => this.shouldIncludeBook(book, 'title', value) ||
-                                                              this.shouldIncludeBook(book, 'author', value)
+    this.setState({ books: BookServices.books.filter(book =>
+      this.shouldIncludeBook(book, 'title', value) ||
+      this.shouldIncludeBook(book, 'author', value)
     )});
   }
 
