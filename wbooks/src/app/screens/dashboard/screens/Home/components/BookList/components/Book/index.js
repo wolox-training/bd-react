@@ -11,12 +11,12 @@ const Book = ({ image_url, title, author }) => {
       <p>{author}</p>
     </div>
   );
-}
+};
 
 Book.propTypes = {
   image_url: PropTypes.string,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired
-}
+};
 
 export default Book;
