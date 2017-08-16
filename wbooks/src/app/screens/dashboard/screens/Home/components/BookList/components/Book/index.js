@@ -1,16 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './styles.css';
 
-class Book extends React.Component {
-  render() {
-    return (
-      <div className="book">
-        <img src={this.props.img} alt={this.props.title}/>
-        <span>{this.props.title}</span>
-        <p>{this.props.author}</p>
-      </div>
-    );
-  }
+const Book = props => {
+  return (
+    <div className="book">
+      <img src={props.img} alt={props.title} />
+      <span>{props.title}</span>
+      <p>{props.author}</p>
+    </div>
+  );
+}
+
+Book.propTypes = {
+  img: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired
 }
 
 export default Book;

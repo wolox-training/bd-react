@@ -1,14 +1,15 @@
 import React from 'react';
+
+import './styles.css';
 import Dashboard from './screens/dashboard';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <Dashboard />
-      </div>
-    );
-  }
+
+const App = () => {
+  return (
+    <div className="App">
+      <Dashboard />
+    </div>
+  );
 }
 
 export default App;
