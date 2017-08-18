@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Book from './components/Book';
 import './styles.css';
@@ -7,12 +8,14 @@ import './styles.css';
 const BookList = ({ books }) => {
   return (
     <div className="book-list">
-      {books.map((book) =>
-        <Book key={book.id} {...book} />
+      {books.map( book =>
+        <Link to={`/books/${book.id}`} >
+          <Book key={book.id} {...book} />
+        </Link>
       )}
     </div>
   );
-}
+};
 
 BookList.propTypes = {
   books: PropTypes.arrayOf(
