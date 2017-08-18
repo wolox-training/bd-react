@@ -29,7 +29,7 @@ class Detail extends React.Component {
         <CommentList />
         <Link to="/">
           <div className="nav-back">
-            <span>Volver</span>
+            <span>&lt; Volver</span>
           </div>
         </Link>
       </div>
