@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { HOME } from '../constants/routes';
+import { HOME, LOGIN } from '../constants/routes';
 
 import './styles.css';
 import Dashboard from './screens/dashboard';
@@ -11,7 +11,7 @@ const App = () =>
   <div className="App">
     <Switch>
       <Route path={HOME} component={Dashboard} />
-      <Route path="/" component={Login} />
+      <Route path={LOGIN} component={Login} />
     </Switch>
   </div>;
 
