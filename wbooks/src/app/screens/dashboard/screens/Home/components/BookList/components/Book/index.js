@@ -7,16 +7,20 @@ const Book = ({ image_url, title, author }) => {
   return (
     <div className="book">
       <img src={image_url} alt={title} />
-      <span>{title}</span>
-      <p>{author}</p>
+      <span>
+        {title}
+      </span>
+      <p>
+        {author}
+      </p>
     </div>
   );
 };
 
 Book.propTypes = {
   image_url: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired
+  title: PropTypes.string,
+  author: PropTypes.string
 };
 
 export default Book;

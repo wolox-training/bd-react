@@ -1,0 +1,43 @@
+.book-detail {
+  display: flex;
+  padding: 10px;
+}
+
+.detail-img {
+  margin-right: 20px;
+}
+
+.detail-img img {
+  width: 200px;
+  height: 300px;
+}
+
+.detail-info {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.detail-info span {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.detail-info p {
+  font-size: 16px;
+}
+
+.detail-info .book-description {
+  font-size: 12px;
+  max-width: 400px;
+}
+
+.detail-info button {
+  border: none;
+  font-size: 20px;
+  color: white;
+  background: #00adee;
+  width: 190px;
+  height: 40px;
+}
