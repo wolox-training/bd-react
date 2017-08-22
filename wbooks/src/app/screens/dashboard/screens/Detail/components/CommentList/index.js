@@ -4,8 +4,8 @@ import Comment from './components/Comment';
 import CommentInput from './components/CommentInput';
 import './styles.css';
 
+const comment = {};
 const CommentList = () => {
-  const comment = {};
   return (
     <div className="comment-list">
       <div className="new-comment">
