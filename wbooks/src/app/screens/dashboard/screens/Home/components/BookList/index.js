@@ -11,7 +11,7 @@ const BookList = ({ books }) => {
   return (
     <div className="book-list">
       {books.map(book =>
-        <Link key={book.id} to={`${BOOK}/${book.id}`} >
+        <Link key={book.id} to={`${BOOK}/${book.id}`}>
           <Book {...book} />
         </Link>
       )}
