@@ -3,9 +3,9 @@ import React from 'react';
 import Book from '../../../Home/components/BookList/components/Book';
 import './styles.css';
 
-const Suggestion = () => {
+const SuggestionList = () => {
   return (
-    <div className="suggestion">
+    <div className="suggestion-list">
       <div className="suggestion-title">
         <h4>Suggestions</h4>
       </div>
@@ -19,4 +19,4 @@ const Suggestion = () => {
   );
 };
 
-export default Suggestion;
+export default SuggestionList;

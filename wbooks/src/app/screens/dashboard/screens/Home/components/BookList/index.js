@@ -2,15 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { BOOK } from '../../../../../../../constants/routes';
+
 import Book from './components/Book';
 import './styles.css';
 
 const BookList = ({ books }) => {
   return (
     <div className="book-list">
-      {books.map( book =>
-        <Link to={`/books/${book.id}`} >
-          <Book key={book.id} {...book} />
+      {books.map(book =>
+        <Link key={book.id} to={`${BOOK}/${book.id}`} >
+          <Book {...book} />
         </Link>
       )}
     </div>
@@ -26,6 +28,6 @@ BookList.propTypes = {
       author: PropTypes.string
     })
   )
-}
+};
 
 export default BookList;

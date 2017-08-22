@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import BookService from '../../../../services/BookServices';
+import { HOME } from '../../../../../constants/routes';
 
-import BookDetail from './components/BookDetail';
-import Suggestion from './components/Suggestion';
+import BookDescription from './components/BookDetail';
+import SuggestionList from './components/SuggestionList';
 import CommentList from './components/CommentList';
 import './styles.css';
 
-class Detail extends React.Component {
+class BookDetail extends React.Component {
   state = { book: null };
 
   componentWillMount() {
@@ -16,18 +17,18 @@ class Detail extends React.Component {
     if (!id) {
       // TODO: Handle this border case
     }
-    this.setState({ book: BookService.books.filter(book => '' + book.id === id)[0] });
+    this.setState({ book: BookService.books.filter(book => `${book.id}` === id)[0] });
   }
 
   render() {
     return (
       <div className="detail">
-        <BookDetail key={this.state.book.id} {...this.state.book} />
+        <BookDescription key={this.state.book.id} {...this.state.book} />
         <hr />
-        <Suggestion />
+        <SuggestionList />
         <hr />
         <CommentList />
-        <Link to="/">
+        <Link to={HOME}>
           <div className="nav-back">
             <span>&lt; Volver</span>
           </div>
@@ -37,4 +38,4 @@ class Detail extends React.Component {
   }
 }
 
-export default Detail;
+export default BookDetail;
