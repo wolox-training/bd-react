@@ -1,2 +1,3 @@
-export const HOME = '/';
-export const BOOK = '/books';
+export const HOME = '/home';
+export const BOOK = '/home/books';
+export const LOGIN = '/';
