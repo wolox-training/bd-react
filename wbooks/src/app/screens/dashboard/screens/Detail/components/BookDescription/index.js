@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './styles.css';
 
-const BookDetail = ({ image_url, title, author, year, genre }) => {
+const BookDescription = ({ image_url, title, author, year, genre }) => {
   return (
     <div className="book-detail">
       <div className="detail-img">
@@ -31,7 +31,7 @@ const BookDetail = ({ image_url, title, author, year, genre }) => {
   );
 };
 
-BookDetail.propTypes = {
+BookDescription.propTypes = {
   image_url: PropTypes.string,
   title: PropTypes.string,
   author: PropTypes.string,
@@ -39,4 +39,4 @@ BookDetail.propTypes = {
   genre: PropTypes.string
 };
 
-export default BookDetail;
+export default BookDescription;
