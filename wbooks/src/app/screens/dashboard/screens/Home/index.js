@@ -1,14 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import BookServices from '../../../../services/BookServices';
+
 import BookList from './components/BookList';
 import SearchBar from './components/SearchBar';
 import './styles.css';
 
 class Home extends React.Component {
   state = {
-    books: BookServices.books
-  }
+    books: this.props.books
+  };
 
   shouldIncludeBook(book, field, filter) {
     return book[field].indexOf(filter) !== -1;
@@ -31,4 +33,8 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+const mapStateToProps = store => ({
+  books: store.book.bookList
+});
+
+export default connect(mapStateToProps)(Home);
