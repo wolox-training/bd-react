@@ -1,10 +1,10 @@
 export const actionNames = {
-  BOOK_DETAIL: 'BOOK_DETAIL'
+  GET_BOOK_DETAIL: '@@BOOK/GET_BOOK_DETAIL'
 };
 
 const actionCreators = {
   getBookDetail(bookId) {
-    return { type: actionNames.BOOK_DETAIL, payload: { bookId } };
+    return { type: actionNames.GET_BOOK_DETAIL, payload: { bookId } };
   }
 };
 

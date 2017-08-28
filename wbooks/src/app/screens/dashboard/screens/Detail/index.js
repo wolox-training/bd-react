@@ -40,7 +40,11 @@ class BookDetail extends React.Component {
 }
 
 BookDetail.propTypes = {
-  id: PropTypes.number
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired
+    }).isRequired
+  })
 };
 
 const mapStateToProps = store => ({

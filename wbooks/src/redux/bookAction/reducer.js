@@ -9,7 +9,7 @@ const initialState = {
 
 const bookAction = (state = initialState, action) => {
   switch (action.type) {
-    case actionNames.BOOK_DETAIL:
+    case actionNames.GET_BOOK_DETAIL:
       return {
         ...state,
         bookDetail: state.bookList.filter(book => `${book.id}` === action.payload.bookId)[0]
