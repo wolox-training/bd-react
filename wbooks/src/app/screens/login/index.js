@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LoginButton from './components/LoginButton';
+import LoginForm from './components/LoginForm';
 import imgBooks from './assets/img-books.png';
 import wbookLogo from './assets/wbooks_logo.svg';
 
@@ -12,7 +12,7 @@ const Login = () =>
       <img src={imgBooks} alt="imgBooks" />
       <img src={wbookLogo} alt="wbookLogo" />
     </div>
-    <LoginButton />
+    <LoginForm />
   </div>;
 
 export default Login;
