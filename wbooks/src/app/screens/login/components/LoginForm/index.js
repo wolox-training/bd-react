@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
+import { SIGNUP } from '../../../../../constants/routes';
 import userActions from '../../../../../redux/userAction/actions';
 
 import './styles.css';
@@ -43,6 +45,11 @@ class LoginForm extends React.Component {
             required
           />
           <button type="submit">Iniciar Sesion</button>
+          <Link to={SIGNUP}>
+            <div className="nav-signup">
+              <span>Registrarse</span>
+            </div>
+          </Link>
         </form>
       </div>
     );

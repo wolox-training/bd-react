@@ -1,9 +1,7 @@
-import { create } from 'apisauce';
-
-const api = create({
-  baseURL: 'https://wbooks-api-stage.herokuapp.com/api/v1/'
-});
+import api from '../../config/api';
 
 export default {
-  loginUser: async (email, password) => api.post('/users/sessions', { email, password })
+  loginUser: async (email, password) => api.post('/users/sessions', { email, password }),
+  signupUser: async body => api.post('/users', body),
+  setToken: token => api.setHeader('Authorization', token)
 };
