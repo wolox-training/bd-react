@@ -1,0 +1,29 @@
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.login-form form input {
+  font-size: 16px;
+  border: 1px solid #CCC;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 4px;
+}
+
+.login-form form button {
+  color: white;
+  font-size: 16px;
+  border: none;
+  background-color: #E93939;
+  border-radius: 4px;
+  width: 190px;
+  height: 45px;
+  margin: 20px;
+}
+
+.nav-signup span {
+  font-size: 12px;
+  color: #4E4E4E;
+}
