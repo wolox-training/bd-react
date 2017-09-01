@@ -33,6 +33,9 @@ const actionCreators = {
         alert(response.problem);
       }
     };
+  },
+  logoutUser() {
+    localStorage.removeItem('token');
   }
 };
 
