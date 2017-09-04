@@ -1,3 +1,7 @@
+.detail {
+  position: relative;
+}
+
 hr {
   background-color: #00adee;
   border: none;
@@ -7,9 +11,9 @@ hr {
 .nav-back span {
   font-size: 12px;
   color: #4a4a4a;
-  position: fixed;
+  position: absolute;
   top: 15px;
-  left: 35px;
+  left: 30px;
 }
 
 .detail {
