@@ -28,7 +28,7 @@ class BookDetail extends React.Component {
         <hr />
         <SuggestionList />
         <hr />
-        <CommentList />
+        <CommentList bookId={this.props.book.id} />
         <Link to={HOME}>
           <div className="nav-back">
             <span>&lt; Volver</span>

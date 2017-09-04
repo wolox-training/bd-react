@@ -1,23 +1,32 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import commentActions from '../../../../../../../redux/commentAction/actions';
 
 import Comment from './components/Comment';
 import CommentInput from './components/CommentInput';
 import './styles.css';
 
-const comment = {};
-const CommentList = () => {
-  return (
-    <div className="comment-list">
-      <div className="new-comment">
-        <CommentInput />
+class CommentList extends React.Component {
+  componentWillMount() {
+    this.props.dispatch(commentActions.getComments(this.props.bookId));
+  }
+  render() {
+    return (
+      <div className="comment-list">
+        <div className="new-comment">
+          <CommentInput />
+        </div>
+        <div className="comments">
+          {this.props.comments.map(comment => <Comment key={comment.id} {...comment} />)}
+        </div>
       </div>
-      <div className="comments">
-        <Comment {...comment} />
-        <Comment {...comment} />
-        <Comment {...comment} />
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default CommentList;
+const mapStateToProps = store => ({
+  comments: store.comment.commentList
+});
+
+export default connect(mapStateToProps)(CommentList);
