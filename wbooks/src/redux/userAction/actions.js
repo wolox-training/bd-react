@@ -3,6 +3,7 @@ import history from '../../history';
 
 export const actionNames = {
   LOGIN_USER: '@@USER/LOGIN_USER',
+  LOGIN_USER_SUCCESFULL: '@@USER/LOGIN_USER_SUCCESFULL',
   SIGNUP_USER: '@@USER/SIGNUP_USER'
 };
 
@@ -15,6 +16,7 @@ const actionCreators = {
       if (response.ok) {
         sessionStorage.setItem('token', response.data.access_token);
         UserService.setToken(response.data.access_token);
+        dispatch(actionCreators.getCurrentUser());
         history.push('/home');
       } else {
         // eslint-disable-next-line no-alert
@@ -36,6 +38,14 @@ const actionCreators = {
   },
   logoutUser() {
     localStorage.removeItem('token');
+  },
+  getCurrentUser() {
+    return async dispatch => {
+      const response = await UserService.getCurrentUser();
+      if (response.ok) {
+        dispatch({ type: actionNames.LOGIN_USER_SUCCESFULL, payload: { currentUser: response.data } });
+      }
+    };
   }
 };
 
