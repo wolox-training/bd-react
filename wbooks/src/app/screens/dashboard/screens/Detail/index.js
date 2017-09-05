@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 
 import { HOME } from '../../../../../constants/routes';
 import bookActions from '../../../../../redux/bookAction/actions';
+import suggestionActions from '../../../../../redux/suggestionAction/actions';
+import commentActions from '../../../../../redux/commentAction/actions';
 
 import BookDescription from './components/BookDescription';
 import SuggestionList from './components/SuggestionList';
@@ -21,6 +23,8 @@ class BookDetail extends React.Component {
     const { id } = nextProps.match.params;
     if (id !== this.props.match.params.id) {
       this.props.dispatch(bookActions.getBookDetail(id));
+      this.props.dispatch(suggestionActions.getSuggestionList());
+      this.props.dispatch(commentActions.getComments(id));
     }
   }
 
