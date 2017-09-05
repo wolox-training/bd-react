@@ -17,6 +17,13 @@ class BookDetail extends React.Component {
     this.props.dispatch(bookActions.getBookDetail(id));
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { id } = nextProps.match.params;
+    if (id !== this.props.match.params.id) {
+      this.props.dispatch(bookActions.getBookDetail(id));
+    }
+  }
+
   render() {
     if (!this.props.book) {
       return null;
