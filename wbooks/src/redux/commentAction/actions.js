@@ -2,22 +2,32 @@ import CommentService from '../../app/services/CommentService';
 
 export const actionNames = {
   GET_COMMENTS: '@@COMMENT/GET_COMMENTS',
-  GET_COMMENTS_SUCCESFULL: '@@COMMENT/GET_COMMENTS_SUCCESFULL',
+  GET_COMMENTS_SUCCESFUL: '@@COMMENT/GET_COMMENTS_SUCCESFULL',
   GET_COMMENTS_FAILURE: '@@COMMENT/GET_COMMENTS_FAILURE',
   POST_COMMENT: '@@COMMENT/POST_COMMENT',
-  POST_COMMENT_SUCCESFULL: '@COMMENT/POST_COMMENT_SUCCESFULL',
-  POST_COMMENT_FAILURE: '@COMMENT/POST_COMMENT_FAILURE'
+  POST_COMMENT_FINISHED: '@COMMENT/POST_COMMENT_FINISHED'
+};
+
+const privateActionCreators = {
+  getCommentsSuccesful(data) {
+    return { type: actionNames.GET_COMMENTS_SUCCESFUL, payload: { comments: data } };
+  },
+  getCommentsFailure() {
+    return { type: actionNames.GET_COMMENTS_FAILURE };
+  },
+  postCommentFinished() {
+    return { type: actionNames.POST_COMMENT_FINISHED };
+  }
 };
 
 const actionCreators = {
   getComments(bookId) {
     return async dispatch => {
-      dispatch({ type: actionNames.GET_COMMENTS });
       const response = await CommentService.getComments(bookId);
       if (response.ok) {
-        dispatch({ type: actionNames.GET_COMMENTS_SUCCESFULL, payload: { comments: response.data } });
+        dispatch(privateActionCreators.getCommentsSuccesful(response.data));
       } else {
-        dispatch({ type: actionNames.GET_COMMENTS_FAILURE });
+        dispatch(actionCreators.getCommentsFailure());
       }
     };
   },
@@ -28,10 +38,11 @@ const actionCreators = {
       dispatch({ type: actionNames.POST_COMMENT });
       const response = await CommentService.postComment(currentUserId, currentBookId, content);
       if (response.ok) {
-        dispatch({ type: actionNames.POST_COMMENT_SUCCESFULL });
+        dispatch(privateActionCreators.postCommentFinished());
         dispatch(actionCreators.getComments(currentBookId));
       } else {
-        dispatch({ type: actionNames.POST_COMMENT_FAILURE });
+        dispatch(privateActionCreators.postCommentFinished());
+        // TODO: Handle problems.
         // eslint-disable-next-line no-alert
         alert(response.problem);
       }

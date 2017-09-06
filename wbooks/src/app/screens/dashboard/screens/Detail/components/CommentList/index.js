@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import commentActions from '../../../../../../../redux/commentAction/actions';
 
@@ -24,6 +25,19 @@ class CommentList extends React.Component {
     );
   }
 }
+
+CommentList.propTypes = {
+  comments: PropTypes.arrayOf(
+    PropTypes.shape({
+      content: PropTypes.string.isRequired,
+      user: PropTypes.shape({
+        first_name: PropTypes.string.isRequired
+      }),
+      created_at: PropTypes.string.isRequired
+    })
+  ),
+  bookId: PropTypes.string.isRequired
+};
 
 const mapStateToProps = store => ({
   comments: store.comment.commentList

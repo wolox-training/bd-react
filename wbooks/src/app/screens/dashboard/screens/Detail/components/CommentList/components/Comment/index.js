@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as moment from 'moment';
-import 'moment/locale/es';
 
 import './styles.css';
 import userImgPng from '../../assets/user_img.png';
 
 const Comment = ({ user, created_at, content }) => {
-  moment.locale('es');
   return (
     <div className="comment">
       <div className="user-img">
-        <img src={userImgPng} />
+        <img src={userImgPng} alt="profile-img" />
       </div>
       <div className="comment-body">
         <p className="comment-user">
@@ -29,13 +27,15 @@ const Comment = ({ user, created_at, content }) => {
 };
 
 Comment.defaultProps = {
-  image_url: userImgPng,
-  date: 'xx/xx/xx',
-  content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  image_url: userImgPng
 };
 
 Comment.propTypes = {
-  content: PropTypes.string.isRequired
+  content: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    first_name: PropTypes.string.isRequired
+  }),
+  created_at: PropTypes.string.isRequired
 };
 
 export default Comment;

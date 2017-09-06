@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import commentActions from '../../../../../../../../../redux/commentAction/actions';
 import './styles.css';
@@ -42,6 +43,10 @@ class CommentInput extends React.Component {
     );
   }
 }
+
+CommentInput.propTypes = {
+  commentLoading: PropTypes.bool
+};
 
 const mapStateToProps = store => ({
   commentLoading: store.comment.commentLoading
