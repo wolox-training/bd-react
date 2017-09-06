@@ -17,6 +17,7 @@ class BookDetail extends React.Component {
   componentWillMount() {
     const { id } = this.props.match.params;
     this.props.dispatch(bookActions.getBookDetail(id));
+    this.props.dispatch(bookActions.getRentStatus(id));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -28,6 +29,14 @@ class BookDetail extends React.Component {
     }
   }
 
+  handleWishlist = (rentInfo, sameUser) => {
+    if (rentInfo) {
+      if (!sameUser) {
+        this.props.dispatch(bookActions.postWishlist());
+      }
+    }
+  };
+
   render() {
     if (!this.props.book) {
       return null;
@@ -35,7 +44,13 @@ class BookDetail extends React.Component {
 
     return (
       <div className="detail">
-        <BookDescription key={this.props.book.id} {...this.props.book} />
+        <BookDescription
+          key={this.props.book.id}
+          {...this.props.book}
+          buttonProps={this.props.buttonProps}
+          onClick={this.handleWishlist}
+          rentInfo={this.props.rentInfo}
+        />
         <hr />
         <SuggestionList />
         <hr />
@@ -58,8 +73,27 @@ BookDetail.propTypes = {
   })
 };
 
+const buttonProps = (rentStatus, sameUser) => {
+  if (rentStatus) {
+    if (sameUser) {
+      return { text: 'Devolver', class: 'button-return' };
+    }
+    return { text: 'Wishlist', class: 'button-wishlist' };
+  }
+  return { text: 'Alquilar', class: 'button-rent' };
+};
+
+const rentStatus = rentInfo => {
+  if (rentInfo) {
+    return true;
+  }
+  return false;
+};
+
 const mapStateToProps = store => ({
-  book: store.book.bookDetail
+  book: store.book.bookDetail,
+  rentInfo: store.book.rentInfo,
+  buttonProps: buttonProps(rentStatus(store.book.rentInfo), store.book.sameUser)
 });
 
 export default connect(mapStateToProps)(BookDetail);
