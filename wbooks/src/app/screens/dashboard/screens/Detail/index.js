@@ -51,6 +51,9 @@ BookDetail.propTypes = {
     params: PropTypes.shape({
       id: PropTypes.string.isRequired
     }).isRequired
+  }),
+  book: PropTypes.shape({
+    id: PropTypes.number.isRequired
   })
 };
 

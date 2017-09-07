@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { BOOK } from '../../../../../../../constants/routes';
 import suggestionActions from '../../../../../../../redux/suggestionAction/actions';
@@ -28,6 +29,10 @@ class SuggestionList extends React.Component {
     );
   }
 }
+
+SuggestionList.propTypes = {
+  suggestions: PropTypes.arrayOf(PropTypes.shape(Book.propTypes))
+};
 
 const mapStateToProps = store => ({
   suggestions: store.suggestion.suggestionList
