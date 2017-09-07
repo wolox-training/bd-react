@@ -1,19 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { HOME } from '../../../../../constants/routes';
 import bookActions from '../../../../../redux/bookAction/actions';
 import suggestionActions from '../../../../../redux/suggestionAction/actions';
 import commentActions from '../../../../../redux/commentAction/actions';
 
-import BookDescription from './components/BookDescription';
-import SuggestionList from './components/SuggestionList';
-import CommentList from './components/CommentList';
+import BookDetail from './layout';
 import './styles.css';
 
-class BookDetail extends React.Component {
+class BookDetailContainer extends React.Component {
   componentWillMount() {
     const { id } = this.props.match.params;
     this.props.dispatch(bookActions.getBookDetail(id));
@@ -38,38 +34,18 @@ class BookDetail extends React.Component {
   };
 
   render() {
-    if (!this.props.book) {
-      return null;
-    }
-
-    return (
-      <div className="detail">
-        <BookDescription
-          key={this.props.book.id}
-          {...this.props.book}
-          buttonProps={this.props.buttonProps}
-          onClick={this.handleWishlist}
-          rentInfo={this.props.rentInfo}
-        />
-        <hr />
-        <SuggestionList />
-        <hr />
-        <CommentList bookId={this.props.book.id} />
-        <Link to={HOME}>
-          <div className="nav-back">
-            <span>&lt; Volver</span>
-          </div>
-        </Link>
-      </div>
-    );
+    return <BookDetail book={this.props.book} rentInfo={this.props.rentInfo} buttonProps={this.props.buttonProps} handleWishlist={this.handleWishlist} />;
   }
 }
 
-BookDetail.propTypes = {
+BookDetailContainer.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired
     }).isRequired
+  }),
+  book: PropTypes.shape({
+    id: PropTypes.number.isRequired
   })
 };
 
@@ -96,4 +72,4 @@ const mapStateToProps = store => ({
   buttonProps: buttonProps(rentStatus(store.book.rentInfo), store.book.sameUser)
 });
 
-export default connect(mapStateToProps)(BookDetail);
+export default connect(mapStateToProps)(BookDetailContainer);
