@@ -1,17 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { HOME } from '../../../../../constants/routes';
 import bookActions from '../../../../../redux/bookAction/actions';
 
-import BookDescription from './components/BookDescription';
-import SuggestionList from './components/SuggestionList';
-import CommentList from './components/CommentList';
+import BookDetail from './layout';
 import './styles.css';
 
-class BookDetail extends React.Component {
+class BookDetailContainer extends React.Component {
   componentWillMount() {
     const { id } = this.props.match.params;
     this.props.dispatch(bookActions.getBookDetail(id));
@@ -25,28 +21,11 @@ class BookDetail extends React.Component {
   }
 
   render() {
-    if (!this.props.book) {
-      return null;
-    }
-
-    return (
-      <div className="detail">
-        <BookDescription key={this.props.book.id} {...this.props.book} />
-        <hr />
-        <SuggestionList />
-        <hr />
-        <CommentList />
-        <Link to={HOME}>
-          <div className="nav-back">
-            <span>&lt; Volver</span>
-          </div>
-        </Link>
-      </div>
-    );
+    return <BookDetail book={this.props.book} />;
   }
 }
 
-BookDetail.propTypes = {
+BookDetailContainer.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired
@@ -61,4 +40,4 @@ const mapStateToProps = store => ({
   book: store.book.bookDetail
 });
 
-export default connect(mapStateToProps)(BookDetail);
+export default connect(mapStateToProps)(BookDetailContainer);
