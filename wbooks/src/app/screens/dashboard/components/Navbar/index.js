@@ -40,7 +40,7 @@ class Navbar extends React.Component {
             </button>
             {this.state.profileDropdown
               ? <div className={'dropdown-profile-content'}>
-                  {/* TODO: asdas */}
+                  {/* TODO: Link to the Profile view. */}
                   <a href="">Perfil</a>
                   <Link to={LOGIN} onClick={this.closeSession}>
                     <p>Cerrar Sesión</p>

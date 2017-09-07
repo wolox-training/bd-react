@@ -3,7 +3,7 @@ import history from '../../history';
 
 export const actionNames = {
   LOGIN_USER: '@@USER/LOGIN_USER',
-  LOGIN_USER_SUCCESFULL: '@@USER/LOGIN_USER_SUCCESFULL',
+  GET_CURRENT_USER_SUCCESSFUL: '@@USER/GET_CURRENT_USER_SUCCESSFUL',
   SIGNUP_USER: '@@USER/SIGNUP_USER'
 };
 
@@ -43,7 +43,7 @@ const actionCreators = {
     return async dispatch => {
       const response = await UserService.getCurrentUser();
       if (response.ok) {
-        dispatch({ type: actionNames.LOGIN_USER_SUCCESFULL, payload: { currentUser: response.data } });
+        dispatch({ type: actionNames.GET_CURRENT_USER_SUCCESSFUL, payload: { currentUser: response.data } });
       }
     };
   }

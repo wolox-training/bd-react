@@ -5,9 +5,9 @@ const initialState = {
   commentLoading: false
 };
 
-const commentCompare = (date1, date2) => {
-  if (date1 > date2) return -1;
-  if (date1 < date2) return 1;
+const commentCompare = (comment, anotherComment) => {
+  if (comment.created_at > anotherComment.created_at) return -1;
+  if (comment.created_at < anotherComment.created_at) return 1;
   return 0;
 };
 
@@ -16,7 +16,7 @@ const commentAction = (state = initialState, action) => {
     case actionNames.GET_COMMENTS_SUCCESFUL:
       return {
         ...state,
-        commentList: action.payload.comments.sort((comment, anotherComment) => commentCompare(comment.created_at, anotherComment.created_at)).slice(0, 4)
+        commentList: action.payload.comments.sort(commentCompare).slice(0, 4)
       };
     case actionNames.GET_COMMENTS_FAILURE:
       return state;
