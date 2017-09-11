@@ -6,7 +6,7 @@ const initialState = {
 
 const userAction = (state = initialState, action) => {
   switch (action.type) {
-    case actionNames.LOGIN_USER_SUCCESFULL:
+    case actionNames.GET_CURRENT_USER_SUCCESSFUL:
       return {
         ...state,
         currentUser: action.payload.currentUser

@@ -7,6 +7,8 @@ import store from './redux/store';
 import App from './app';
 import history from './history';
 
+import './config/moment';
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>

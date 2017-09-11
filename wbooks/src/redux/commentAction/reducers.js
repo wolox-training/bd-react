@@ -5,34 +5,27 @@ const initialState = {
   commentLoading: false
 };
 
-const date_compare = (date1, date2) => {
-  if (date1 > date2) return -1;
-  if (date1 < date2) return 1;
+const commentCompare = (comment, anotherComment) => {
+  if (comment.created_at > anotherComment.created_at) return -1;
+  if (comment.created_at < anotherComment.created_at) return 1;
   return 0;
 };
 
 const commentAction = (state = initialState, action) => {
   switch (action.type) {
-    case actionNames.GET_COMMENTS_SUCCESFULL:
+    case actionNames.GET_COMMENTS_SUCCESFUL:
       return {
         ...state,
-        commentList: action.payload.comments.sort((comment, anotherComment) => date_compare(comment.created_at, anotherComment.created_at)).slice(0, 4)
+        commentList: action.payload.comments.sort(commentCompare).slice(0, 4)
       };
     case actionNames.GET_COMMENTS_FAILURE:
-      return {
-        state
-      };
+      return state;
     case actionNames.POST_COMMENT:
       return {
         ...state,
         commentLoading: true
       };
-    case actionNames.POST_COMMENT_SUCCESFULL:
-      return {
-        ...state,
-        commentLoading: false
-      };
-    case actionNames.POST_COMMENT_FAILURE:
+    case actionNames.POST_COMMENT_FINISHED:
       return {
         ...state,
         commentLoading: false

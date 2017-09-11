@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "apisauce": "^0.14.1",
-    "http": "^0.0.0",
     "moment": "^2.18.1",
     "node-sass-chokidar": "0.0.3",
     "prop-types": "^15.5.10",
