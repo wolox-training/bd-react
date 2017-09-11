@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { BOOK } from '../../../../../../../constants/routes';
 import Book from '../../../Home/components/BookList/components/Book';
@@ -18,5 +19,9 @@ const SuggestionList = ({ suggestions }) =>
       )}
     </div>
   </div>;
+
+SuggestionList.propTypes = {
+  suggestions: PropTypes.arrayOf(PropTypes.object)
+};
 
 export default SuggestionList;

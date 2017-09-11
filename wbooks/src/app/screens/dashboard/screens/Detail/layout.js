@@ -26,7 +26,8 @@ const BookDetail = ({ book, suggestions }) =>
 BookDetail.propTypes = {
   book: PropTypes.shape({
     id: PropTypes.number.isRequired
-  })
+  }),
+  suggestions: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default BookDetail;
