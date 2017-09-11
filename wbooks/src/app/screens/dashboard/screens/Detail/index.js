@@ -59,12 +59,7 @@ const buttonProps = (rentStatus, sameUser) => {
   return { text: 'Alquilar', class: 'button-rent' };
 };
 
-const rentStatus = rentInfo => {
-  if (rentInfo) {
-    return true;
-  }
-  return false;
-};
+const rentStatus = rentInfo => !!rentInfo;
 
 const mapStateToProps = store => ({
   book: store.book.bookDetail,

@@ -10,8 +10,13 @@ export const actionNames = {
   GET_RENT_STATUS_SUCCESFUL: '@@BOOK/GET_RENT_STATUS_SUCCESFULL',
   GET_RENT_STATUS_FAILURE: '@@BOOK/GET_RENT_STATUS_FAILURE',
   POST_WISHLIST: '@@BOOK/POST_WISHLIST',
-  POST_WISHLIST_SUCCESFUL: '@@BOOK/POST_WISHLIST_SUCCESFUL',
-  POST_WISHLIST_FAILURE: '@@BOOK/POST_WISHLIST_FAILURE'
+  POST_WISHLIST_FINISHED: '@@BOOK/POST_WISHLIST_FINISHED'
+};
+
+const privateActionCreators = {
+  postWishlistFinished() {
+    return { type: actionNames.POST_WISHLIST_FINISHED };
+  }
 };
 
 const actionCreators = {
@@ -53,9 +58,9 @@ const actionCreators = {
       const response = await BookServices.postWishlist(currentUserId, currentBookId);
       dispatch({ type: actionNames.POST_WISHLIST });
       if (response.ok) {
-        dispatch({ type: actionNames.POST_WISHLIST_SUCCESFUL });
+        dispatch(privateActionCreators.postWishlistFinished());
       } else {
-        dispatch({ type: actionNames.POST_WISHLIST_FAILURE });
+        dispatch(privateActionCreators.postWishlistFinished());
       }
     }
   }

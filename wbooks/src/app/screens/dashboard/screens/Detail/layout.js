@@ -32,7 +32,12 @@ const BookDetail = ({ book, buttonProps, rentInfo, handleWishlist }) =>
 BookDetail.propTypes = {
   book: PropTypes.shape({
     id: PropTypes.number.isRequired
-  })
+  }),
+  buttonProps: PropTypes.shape({
+    text: PropTypes.string.required,
+    class: PropTypes.string.required
+  }),
+  rentInfo: PropTypes.object
 };
 
 export default BookDetail;

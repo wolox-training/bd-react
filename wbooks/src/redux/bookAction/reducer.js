@@ -47,12 +47,7 @@ const bookAction = (state = initialState, action) => {
         ...state,
         wishLoading: true
       };
-    case actionNames.POST_WISHLIST_SUCCESFUL:
-      return {
-        ...state,
-        wishLoading: false
-      };
-    case actionNames.POST_WISHLIST_FAILURE:
+    case actionNames.POST_WISHLIST_FINISHED:
       return {
         ...state,
         wishLoading: false
