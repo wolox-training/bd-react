@@ -1,54 +1,46 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { HOME } from '../../../../../constants/routes';
 import bookActions from '../../../../../redux/bookAction/actions';
+import suggestionActions from '../../../../../redux/suggestionAction/actions';
 
-import BookDescription from './components/BookDescription';
-import SuggestionList from './components/SuggestionList';
-import CommentList from './components/CommentList';
+import BookDetail from './layout';
 import './styles.css';
 
-class BookDetail extends React.Component {
+class BookDetailContainer extends React.Component {
   componentWillMount() {
     const { id } = this.props.match.params;
     this.props.dispatch(bookActions.getBookDetail(id));
+    this.props.dispatch(suggestionActions.getSuggestionList());
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { id } = nextProps.match.params;
+    if (id !== this.props.match.params.id) {
+      this.props.dispatch(bookActions.getBookDetail(id));
+    }
   }
 
   render() {
-    if (!this.props.book) {
-      return null;
-    }
-
-    return (
-      <div className="detail">
-        <BookDescription key={this.props.book.id} {...this.props.book} />
-        <hr />
-        <SuggestionList />
-        <hr />
-        <CommentList bookId={this.props.book.id} />
-        <Link to={HOME}>
-          <div className="nav-back">
-            <span>&lt; Volver</span>
-          </div>
-        </Link>
-      </div>
-    );
+    return <BookDetail book={this.props.book} suggestions={this.props.suggestions} />;
   }
 }
 
-BookDetail.propTypes = {
+BookDetailContainer.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired
     }).isRequired
+  }),
+  book: PropTypes.shape({
+    id: PropTypes.number.isRequired
   })
 };
 
 const mapStateToProps = store => ({
-  book: store.book.bookDetail
+  book: store.book.bookDetail,
+  suggestions: store.suggestion.suggestionList
 });
 
-export default connect(mapStateToProps)(BookDetail);
+export default connect(mapStateToProps)(BookDetailContainer);

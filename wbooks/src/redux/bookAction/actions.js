@@ -1,4 +1,4 @@
-import BookServices from '../../app/services/BookServices';
+import BookServices from '../../app/services/BookService';
 
 export const actionNames = {
   GET_BOOK_DETAIL: '@@BOOK/GET_BOOK_DETAIL',
