@@ -5,7 +5,7 @@ import { BOOK } from '../../../../../../../constants/routes';
 import Book from '../../../Home/components/BookList/components/Book';
 import './styles.css';
 
-const SuggestionList = suggestions =>
+const SuggestionList = ({ suggestions }) =>
   <div className="suggestion-list">
     <div className="suggestion-title">
       <h4>Suggestions</h4>
