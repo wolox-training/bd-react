@@ -34,10 +34,11 @@ BookDetail.propTypes = {
     id: PropTypes.number.isRequired
   }),
   buttonProps: PropTypes.shape({
-    text: PropTypes.string.required,
-    class: PropTypes.string.required
+    text: PropTypes.string.isRequired,
+    class: PropTypes.string.isRequired
   }),
-  rentInfo: PropTypes.object
+  rentInfo: PropTypes.object,
+  handleWishList: PropTypes.func.isRequired
 };
 
 export default BookDetail;
