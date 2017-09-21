@@ -8,14 +8,20 @@ import BookDescription from './components/BookDescription';
 import SuggestionList from './components/SuggestionList';
 import CommentList from './components/CommentList';
 
-const BookDetail = ({ book, suggestions }) =>
+const BookDetail = ({ book, buttonProps, rentInfo, handleWishlist, suggestions }) =>
   book &&
   <div className="detail">
-    <BookDescription key={book.id} {...book} />
+    <BookDescription
+      key={book.id}
+      {...book}
+      buttonProps={buttonProps}
+      onClick={handleWishlist}
+      rentInfo={rentInfo}
+    />
     <hr />
     <SuggestionList suggestions={suggestions} />
     <hr />
-    <CommentList />
+    <CommentList bookId={book.id} />
     <Link to={HOME}>
       <div className="nav-back">
         <span>&lt; Volver</span>
@@ -27,7 +33,12 @@ BookDetail.propTypes = {
   book: PropTypes.shape({
     id: PropTypes.number.isRequired
   }),
-  suggestions: PropTypes.arrayOf(PropTypes.object)
+  buttonProps: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    class: PropTypes.string.isRequired
+  }),
+  rentInfo: PropTypes.object,
+  handleWishList: PropTypes.func.isRequired
 };
 
 export default BookDetail;

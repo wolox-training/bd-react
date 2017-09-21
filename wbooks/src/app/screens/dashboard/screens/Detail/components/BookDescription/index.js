@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './styles.css';
 
-const BookDescription = ({ image_url, title, author, year, genre }) => {
+const BookDescription = ({ image_url, title, author, year, genre, buttonProps, handleWishlist }) => {
   return (
     <div className="book-detail">
       <div className="detail-img">
@@ -22,10 +22,9 @@ const BookDescription = ({ image_url, title, author, year, genre }) => {
         <p>
           {genre}
         </p>
-        <p className="book-description">
-          'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-        </p>
-        <button>Alquilar</button>
+        <button className={buttonProps.class} onClick={handleWishlist}>
+          {buttonProps.text}
+        </button>
       </div>
     </div>
   );

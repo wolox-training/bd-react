@@ -5,12 +5,15 @@ import { actionNames } from './actions';
 const initialState = {
   bookList: [],
   bookDetail: null,
-  filteredList: []
+  filteredList: [],
+  rentInfo: null,
+  sameUser: null,
+  wishLoading: false
 };
 
 const bookAction = (state = initialState, action) => {
   switch (action.type) {
-    case actionNames.GET_BOOKS_SUCCESFULL:
+    case actionNames.GET_BOOKS_SUCCESFUL:
       return {
         ...state,
         bookList: action.payload.books,
@@ -31,6 +34,23 @@ const bookAction = (state = initialState, action) => {
       return {
         ...state,
         bookDetail: state.bookList.filter(book => `${book.id}` === action.payload.bookId)[0]
+      };
+    case actionNames.GET_RENT_STATUS_SUCCESFUL:
+      const rentItem = action.payload.status.filter(rent => rent.book.id === state.bookDetail.id)[0];
+      return {
+        ...state,
+        rentInfo: rentItem,
+        sameUser: action.payload.currentUserId === rentItem.user.id
+      };
+    case actionNames.POST_WISHLIST:
+      return {
+        ...state,
+        wishLoading: true
+      };
+    case actionNames.POST_WISHLIST_FINISHED:
+      return {
+        ...state,
+        wishLoading: false
       };
     default:
       return state;

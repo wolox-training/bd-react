@@ -9,8 +9,8 @@ import suggestion from './suggestionAction/reducer';
 const reducers = combineReducers({
   book,
   comment,
-  suggestion,
-  user
+  user,
+  suggestion
 });
 
 const store = createStore(reducers, applyMiddleware(thunk));
