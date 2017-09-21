@@ -27,7 +27,7 @@ const actionCreators = {
       if (response.ok) {
         dispatch(privateActionCreators.getCommentsSuccesful(response.data));
       } else {
-        dispatch(actionCreators.getCommentsFailure());
+        dispatch(privateActionCreators.getCommentsFailure());
       }
     };
   },

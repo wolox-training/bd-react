@@ -14,6 +14,7 @@ class BookDetailContainer extends React.Component {
     const { id } = this.props.match.params;
     this.props.dispatch(bookActions.getBookDetail(id));
     this.props.dispatch(bookActions.getRentStatus(id));
+    this.props.dispatch(suggestionActions.getSuggestionList());
   }
 
   componentWillReceiveProps(nextProps) {
@@ -34,7 +35,7 @@ class BookDetailContainer extends React.Component {
   };
 
   render() {
-    return <BookDetail book={this.props.book} rentInfo={this.props.rentInfo} buttonProps={this.props.buttonProps} handleWishlist={this.handleWishlist} />;
+    return <BookDetail book={this.props.book} rentInfo={this.props.rentInfo} buttonProps={this.props.buttonProps} handleWishlist={this.handleWishlist} suggestions={this.props.suggestions}/>;
   }
 }
 
@@ -64,7 +65,8 @@ const rentStatus = rentInfo => !!rentInfo;
 const mapStateToProps = store => ({
   book: store.book.bookDetail,
   rentInfo: store.book.rentInfo,
-  buttonProps: buttonProps(rentStatus(store.book.rentInfo), store.book.sameUser)
+  buttonProps: buttonProps(rentStatus(store.book.rentInfo), store.book.sameUser),
+  suggestions: store.suggestion.suggestionList
 });
 
 export default connect(mapStateToProps)(BookDetailContainer);

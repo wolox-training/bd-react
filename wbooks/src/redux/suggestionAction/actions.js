@@ -6,15 +6,21 @@ export const actionNames = {
   GET_SUGGESTION_FAILURE: '@@/SUGGESTION/GET_SUGGESTION_FAILURE'
 };
 
+const privateActionCreators = {
+  getSuggestionSuccesful(data) {
+    return { type: actionNames.GET_SUGGESTION_SUCCESFUL, payload: { suggestions: data } };
+  }
+};
+
 const actionCreators = {
   getSuggestionList() {
     return async (dispatch, getState) => {
       const currentBookId = getState().book.bookDetail.id;
       const response = await SuggestionService.getSuggestionList(currentBookId);
       if (response.ok) {
-        dispatch({ type: actionNames.GET_SUGGESTION_SUCCESFUL, payload: { suggestions: response.data } });
+        dispatch(privateActionCreators.getSuggestionSuccesful(response.data));
       } else {
-        dispatch({ type: actionNames.GET_SUGGESTION_FAILURE });
+        // TODO: Error Handler;
         // eslint-disable-next-line no-alert
         alert(response.problem);
       }

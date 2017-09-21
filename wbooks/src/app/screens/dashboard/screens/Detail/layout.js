@@ -8,7 +8,7 @@ import BookDescription from './components/BookDescription';
 import SuggestionList from './components/SuggestionList';
 import CommentList from './components/CommentList';
 
-const BookDetail = ({ book, buttonProps, rentInfo, handleWishlist }) =>
+const BookDetail = ({ book, buttonProps, rentInfo, handleWishlist, suggestions }) =>
   book &&
   <div className="detail">
     <BookDescription
@@ -19,7 +19,7 @@ const BookDetail = ({ book, buttonProps, rentInfo, handleWishlist }) =>
       rentInfo={rentInfo}
     />
     <hr />
-    <SuggestionList />
+    <SuggestionList suggestions={suggestions} />
     <hr />
     <CommentList bookId={book.id} />
     <Link to={HOME}>

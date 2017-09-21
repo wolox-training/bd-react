@@ -15,7 +15,7 @@ const actionCreators = {
       dispatch({ type: actionNames.LOGIN_USER });
       const response = await UserService.loginUser(user, password);
       if (response.ok) {
-        sessionStorage.setItem('token', response.data.access_token);
+        localStorage.setItem('token', response.data.access_token);
         UserService.setToken(response.data.access_token);
         dispatch(actionCreators.getCurrentUser());
         history.push(HOME);
